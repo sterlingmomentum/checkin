@@ -59,6 +59,8 @@ function clearSaved() {
 /* ---------- Helpers ---------- */
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const arrow = '<span class="arrow" aria-hidden="true">&rarr;</span>';
+// Display-only: show "1 — Very poor" as "Very poor". Stored values and rule mappings are unchanged.
+const displayChoice = c => String(c).replace(/^\d+\s*—\s*/, "");
 const fmt = (t, vars) => t.replace(/\{(\w+)\}/g, (_, k) => vars[k]);
 
 // Q6 is not asked when Q5 = "0 days" (pending research approval).
@@ -152,7 +154,7 @@ function goStep(n) {
 function optionHtml(name, value, idx, selected) {
   return `<label class="opt">
     <input type="radio" name="${esc(name)}" id="${esc(name)}-${idx}" value="${esc(value)}"${selected === value ? " checked" : ""}>
-    <span class="opt-face"><span class="dot" aria-hidden="true"></span><span>${esc(value)}</span></span>
+    <span class="opt-face"><span class="dot" aria-hidden="true"></span><span>${esc(displayChoice(value))}</span></span>
   </label>`;
 }
 
@@ -302,7 +304,7 @@ function summaryHtml(a) {
       return `<span class="ans sub">${q.rows.map(r => `<span>${esc(r)}: <b class="ans">${esc(a[id][r])}</b></span>`).join("")}</span>`;
     }
     if (id === "Q6" && skipQ6(a)) return `<span class="ans muted">${esc(COPY.skippedQ6)}</span>`;
-    return `<span class="ans">${esc(a[id])}</span>`;
+    return `<span class="ans">${esc(displayChoice(a[id]))}</span>`;
   };
   const R = COPY.results;
   return groups.map(g => `
@@ -376,7 +378,6 @@ function renderResults() {
 
       <div class="actions">
         <button type="button" class="btn" id="print">${esc(R.print)}</button>
-        <button type="button" class="btn btn-quiet" id="edit">${esc(R.edit)}</button>
       </div>
       <p class="small muted no-print">${esc(R.printNote)}</p>
 
@@ -387,7 +388,7 @@ function renderResults() {
 
       ${closing}
 
-      ${privacyHtml()}
+      <div class="no-print">${privacyHtml()}</div>
       <div class="actions">
         <button type="button" class="btn" id="print2">${esc(R.print)}</button>
         <button type="button" class="btn btn-quiet" id="clear">${esc(R.clear)}</button>
@@ -398,7 +399,6 @@ function renderResults() {
   const doPrint = () => window.print();
   document.getElementById("print").addEventListener("click", doPrint);
   document.getElementById("print2").addEventListener("click", doPrint);
-  document.getElementById("edit").addEventListener("click", () => goStep(0));
   // Two-step clear built into the page (no browser dialog).
   const clearBtn = document.getElementById("clear");
   clearBtn.addEventListener("click", () => {

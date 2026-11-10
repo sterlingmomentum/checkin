@@ -4,6 +4,9 @@
 
    The function lwciV2Evaluate_ below is copied VERBATIM from the approved
    Apps Script file (only the pure evaluation logic; no Google Sheets code).
+   Approved edit, Nov 9, 2026: the first sentence of N_POST_STRESS (Q27)
+   was reworded. No conditions, priorities or other wording changed.
+
    Do not edit rule conditions or wording here without Sterling Momentum
    approval. If an updated .gs file is approved, replace the function body.
 
@@ -69,7 +72,7 @@ function lwciV2Evaluate_(p) {
     'What tends to help or interfere with making time for experiences that feel restorative or enjoyable?', 'Q11='+get('q11'),35);
   if (one('q27',AGREE_LOW)) add('explore','N_POST_STRESS','Recovery after stress',
     'Restoration following demanding experiences',
-    'You gave a lower endorsement to taking steps to restore your energy after stressful periods. Consider how you usually respond after demanding experiences.',
+    'You indicated that taking steps to restore your energy after stressful periods is less characteristic of your current practices. Consider how you usually respond after demanding experiences.',
     'After a particularly demanding period, what would help you notice and respond to your recovery needs?', 'Q27='+get('q27'),30);
 
   // Competing commitments are described, NOT labelled poor boundary-setting.
@@ -162,7 +165,7 @@ function splitText(text) {
 }
 
 window.LWCI_RULES = {
-  version: 'v0.2.2 (2026-11-06)',
+  version: 'v0.2.2 (2026-11-06) + Q27 wording edit (2026-11-09)',
   evaluateRaw: lwciV2Evaluate_,
   stressCases: lwciV2StressCases_,
   // Returns participant-facing content plus developer-only diagnostics.

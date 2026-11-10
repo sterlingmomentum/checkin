@@ -38,20 +38,22 @@ window.LWCI_SITE_COPY = {
     intro: "This reflection is based on your answers. It is not a score, grade or diagnosis. Look for what feels meaningful to you.",
     supportsHeading: "Exploring What Supports Your Capacity",
     patternsHeading: "Patterns Worth Noticing",
-    promptsHeading: "Two Questions to Explore",
+    promptsHeading: "Additional Questions to Explore",
     summaryHeading: "Your Personal Response Summary",
     contextHeading: "Recent context",
     contextExplanationLabel: "What made this period different",
     print: "Print or Save as PDF",
     clear: "Clear my answers",
     clearConfirm: "Clear your answers from this browser tab? Your reflection will be removed from the screen.",
-    edit: "Review my answers",
     printNote: "To keep a copy, choose Print or Save as PDF. Your reflection is not emailed or stored for you."
   },
 
-  // Closing call to action (same as the Check-In). Set enabled: false to hide.
+  // Coaching invitation (photo + booking link). OFF for the initial launch.
+  // To turn it on later: change enabled to true. Edit headline, copy, button
+  // and url below as needed. To change the photo, replace
+  // assets/kimberly-sterling.jpg with a new file of the same name.
   closing: {
-    enabled: true,
+    enabled: false,
     headline: "Want to talk through what you noticed?",
     copy: "Schedule a connection call with Kimberly to talk about what stood out in your responses and what support might help you lead well.",
     button: "Schedule a Connection Call",

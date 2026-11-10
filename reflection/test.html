@@ -33,7 +33,8 @@
 
 <h2>3. Paste a profile (for example test-01 or test-02)</h2>
 <p>Paste answers as JSON using the question IDs. Example shape: <code>{"Q9":"Often","Q11":"Sometimes","Q15":"Rarely","Q18":"Very true of me","Q20":"Never","Q27":"Somewhat true of me","CTX1":"No, this period was generally typical for me."}</code>. Missing items are filled with neutral filler. Pasted answers stay in this tab only and are not saved in the code.</p>
-<textarea id="paste" spellcheck="false"></textarea>
+<textarea id="paste" spellcheck="false">{"Q9":"Often","Q11":"Often","Q15":"Sometimes","Q18":"Somewhat true of me","Q20":"Sometimes","Q27":"Slightly true of me","CTX1":"Yes, this period was somewhat different."}</textarea>
+<p>Pre-filled with the Q27 wording check from the Nov 9 instructions.</p>
 <div><button id="run-paste">Evaluate</button><button id="open-paste">Open as results page</button></div>
 <div id="paste-out"></div>
 
@@ -58,6 +59,7 @@
     ["Sections cover every question and both context items exactly once", inSections.length === 32 && new Set(inSections).size === 32],
     ["Q8 has five time-of-day rows", (QN.questions[7].rows || []).length === 5],
     ["Q12 keeps Yes / No / Not sure", JSON.stringify(QN.questions[11].choices) === '["Yes","No","Not sure"]'],
+    ["Q22 has the four revised statements, none starting with a number", QN.questions[21].choices.length === 4 && QN.questions[21].choices.every(c => /^They would say/.test(c))],
     ["Every choice-type question has choices", QN.questions.every(q => q.choices && q.choices.length >= 2)]
   ];
   document.getElementById("content-checks").innerHTML = "<table><tr><th>Check</th><th>Result</th></tr>" +

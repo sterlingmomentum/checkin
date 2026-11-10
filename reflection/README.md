@@ -17,6 +17,14 @@ Static site for the Leading Well Capacity Inventory Short Form. It has no server
 
 To change a question's wording, edit its `text` in `content/questionnaire.js`, commit and push. No build step is needed.
 
+## Coaching invitation (off for launch)
+
+The photo, invitation text and booking link are built in but turned off. To turn them on later, open `content/site-copy.js` and find the `closing:` section.
+
+- **Turn on:** change `enabled: false` to `enabled: true`. The invitation then appears on screen and in the printed report.
+- **Text and link:** edit `headline`, `copy`, `button` (the button wording) and `url` (the booking link). Keep the quotation marks.
+- **Photo:** replace `assets/kimberly-sterling.jpg` with a new photo using the same file name. A portrait JPG about 640×800 px works best.
+
 ## How answers are handled
 
 - Answers are processed in the browser only. Nothing is sent to Sterling Momentum, Google Sheets or any AI service.

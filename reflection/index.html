@@ -205,30 +205,37 @@ legend { padding: 0; display: block; width: 100%; margin-bottom: 1.75rem; }
 
 /* Print / Save as PDF: plain, ink on white, nothing clipped */
 @media print {
-  @page { margin: 16mm 14mm; }
+  @page { size: auto; margin: 12mm 13mm; }
   :root { --ground: #fff; --surface: #fff; --ink: #12294D; --ink-soft: #3d4f6c; --ocean: #1C6C84; --foam: #fff; --line: #cfc6b5; --gold: #AD8E52; color-scheme: light; }
-  body { background: #fff; font-size: 11pt; line-height: 1.45; }
+  html, body { height: auto; }
+  body { background: #fff; font-size: 10.5pt; line-height: 1.42; }
+  .app { min-height: 0; display: block; }
   .shore, .complete .sea, .actions, .connect img, .connect .btn, .no-print, .brand-context { display: none !important; }
   .print-only { display: block; }
   main { padding: 0; }
   .wrap { max-width: none; padding: 0; }
-  .screen { animation: none; gap: 1.1rem; }
-  .brand { padding-block: 0 0.5rem; }
+  .screen { animation: none; gap: 0.8rem; }
+  .brand { padding-block: 0 0.35rem; }
+  .brand-plate { width: 2.4rem; height: 2.4rem; }
+  .brand-plate img { width: 1.7rem; }
+  .brand-name { font-size: 10pt; }
   .complete { background: #fff; color: var(--ink); padding: 0 0 0.75rem; align-items: flex-start; text-align: left; gap: 0.5rem; border-bottom: 1px solid var(--gold); }
   .complete .mark, .flourish { display: none; }
-  .complete h1 { font-size: 24pt; max-width: none; }
+  .complete h1 { font-size: 22pt; max-width: none; }
   .complete p { color: var(--ink-soft); max-width: none; }
   .context-note { border: 1px solid var(--line); border-left: 2px solid var(--gold); }
-  .block { padding-top: 0.9rem; gap: 0.7rem; }
+  .block { padding-top: 0.7rem; gap: 0.5rem; }
   *:focus, *:focus-visible { outline: none !important; }
-  .block > h2, .explore h2, .connect-body h2 { font-size: 17pt; }
+  .block > h2, .explore h2, .connect-body h2 { font-size: 16pt; }
   .obs h3 { font-size: 13pt; }
-  .pair { grid-template-columns: 1fr 1fr; gap: 0.8rem 1.5rem; }
+  .pair { grid-template-columns: 1fr 1fr; gap: 0.6rem 1.5rem; }
+  .obs { padding-top: 0.5rem; gap: 0.3rem; }
   .obs, .explore, .context-note { break-inside: avoid; }
-  .explore { padding: 0.9rem 0 0; border-top: 1px solid var(--line); }
+  .explore { padding: 0.7rem 0 0; gap: 0.5rem; border-top: 1px solid var(--line); }
+  .prompts li { padding-block: 0.3rem; }
   .prompts li { font-size: 12.5pt; }
-  .summary h3 { break-after: avoid; }
-  .summary li.item { grid-template-columns: 1fr 0.8fr; padding-block: 0.4rem; }
+  .summary h3 { break-after: avoid; padding-top: 0.4rem; }
+  .summary li.item { grid-template-columns: 1fr 0.8fr; padding-block: 0.28rem; }
   .connect { display: block; background: #fff; color: var(--ink); border-top: 1px solid var(--line); break-inside: avoid; }
   .connect-body { padding: 0.9rem 0 0; gap: 0.4rem; }
   .connect-body p { color: var(--ink-soft); }

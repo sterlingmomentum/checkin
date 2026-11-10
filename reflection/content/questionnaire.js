@@ -4,6 +4,9 @@
    This is the source of truth for question wording, choices and order.
    To apply an approved wording change, edit the text here only. Keep the
    "id" values unchanged: the feedback rules and results labels use them.
+   Nov 9, 2026: Q22 question and choices updated per Sterling Momentum.
+   Numbered choices ("1 — Very poor") keep their stored values here; the
+   page shows them without the number (see displayChoice in app.js).
    ===================================================================== */
 window.LWCI_QUESTIONNAIRE = {
   "version": "Candidate Short Form v1.1 — freeze pending Round 2 cognitive retests",
@@ -349,13 +352,13 @@ window.LWCI_QUESTIONNAIRE = {
     },
     {
       "id": "Q22",
-      "text": "Which statement best describes how the people closest to you would view your availability for meaningful time together?",
+      "text": "Imagine asking the people closest to you about your availability for meaningful time together. Based on how you believe they experience your availability, which statement would they be most likely to choose?",
       "type": "single-choice",
       "choices": [
-        "I generally make plans and reliably follow through.",
-        "I usually follow through, although other responsibilities occasionally interfere.",
-        "I am often reluctant to make plans because I am unsure whether I will have the time or energy.",
-        "It can be difficult to make plans with me because other responsibilities regularly take priority."
+        "They would say I generally make plans with them and reliably follow through.",
+        "They would say I usually follow through with plans, although other responsibilities occasionally interfere.",
+        "They would say I often hesitate to make plans because I am unsure whether I will have the time or energy.",
+        "They would say it can be difficult to make plans with me because other responsibilities regularly take priority."
       ],
       "required": true
     },
